@@ -28,11 +28,13 @@
 */
 
 // Code Here 
-
+function first(arr, cbfunct){
+  cbfunct(arr[0]);
+}
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 
-first(names, function(firstName){
+first(names, function (firstName){
   console.log('The first name in names is ' + firstName);
   return firstName;
 });
@@ -48,7 +50,9 @@ first(names, function(firstName){
 */
 
 //Code Here
-
+function last(arr, cbfunct){
+  cbfunct(arr[arr.length - 1]);
+}
 // Do not edit the code below.
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -66,7 +70,10 @@ last(names, function(lastName){
 */
 
 //Code Here
-
+function multiply(x, y, cbfunct){
+  var multiplied = x * y;
+  cbfunct(multiplied);
+}
 // Do not edit the code below.
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -85,7 +92,24 @@ multiply(4, 3, function(answer){
 */
 
 //Code Here 
-
+function contains(arr, name, cbfunct){
+  var exists = false;
+  for (var i = 0; i < arr.length; i++){
+    if (arr[i] == name){
+      var exists = true;
+      break;
+    }
+    else{
+      continue;
+    }
+  }
+  if (exists == true){
+      cbfunct(true);
+  }
+  else {
+      cbfunct(false);
+  }
+}
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
   if(result === true){
@@ -105,8 +129,12 @@ contains(names, 'Colt', function(result){
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
 
-//Code Here
 
+function uniq(arr, cbfunct){
+  var newset = new Set(arr);
+  var newarr = Array.from(newset);
+  cbfunct(newarr);
+}
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -121,9 +149,12 @@ uniq(names, function(uniqArr){
   Write a function called each that takes in an array of names and a callback function. 
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
-
 //Code Here 
-
+function each(arr, cbfunct){
+  for (var i = 0; i < arr.length; i++){
+    cbfunct(arr[i], i);
+  }
+}
 // Do not edit the code below.
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -140,7 +171,13 @@ each(names, function(item, indice){
 */
 
 // Code here
-
+function getUserById(arr, id, cbfunct){
+  for (var i = 0; i < arr.length; i++){
+    if (arr[i].id == id){
+      cbfunct(arr[i]);
+    }
+  }
+}
 // Do not edit the code below.
 var users = [
   {
